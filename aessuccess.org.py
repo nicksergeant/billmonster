@@ -18,12 +18,12 @@ if user is None:
 
 key = keyring.get_password('aessuccess.org', user)
 
-puts(colored.blue('AES ({})'.format(user)))
-
 if key is None:
     puts(colored.red("You must store the password for {} in your keyring's backend.".format(user)))
     puts('See: http://pypi.python.org/pypi/keyring/#configure-your-keyring-lib')
     sys.exit()
+
+puts(colored.blue('AES ({})'.format(user)))
 
 b = webdriver.Firefox()
 b.get('http://aessuccess.org/')
