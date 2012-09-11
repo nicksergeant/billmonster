@@ -15,7 +15,7 @@ local password storage backend to retrieve passwords. On OS X, the Keychain is u
 
 ### AESSuccess.org:
 
-    python aessuccess.org nick
+    python aessuccess.org.py nick
 
 The script checks the password backend for a password stored with the name
 "aessuccess.org" and a username of "nick" and begins the login process.
