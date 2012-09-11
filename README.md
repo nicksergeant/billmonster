@@ -19,3 +19,7 @@ local password storage backend to retrieve passwords. On OS X, the Keychain is u
 
 The script checks the password backend for a password stored with the name
 "aessuccess.org" and a username of "nick" and begins the login process.
+
+If it is able to login successfully, it prints the following to stdout:
+
+    AES (nick): $120.45
