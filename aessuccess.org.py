@@ -53,9 +53,9 @@ def _element_available(element):
 # If we have a password field, continue. Otherwise, wait to see if we are
 # being asked a security question.
 try:
-    WebDriverWait(b, timeout=5).until(_element_available('input#password'))
+    WebDriverWait(b, timeout=10).until(_element_available('input#password'))
 except TimeoutException:
-    WebDriverWait(b, timeout=5).until(_element_available('input#answer'))
+    WebDriverWait(b, timeout=10).until(_element_available('input#answer'))
 
 # If we have a password field now, fill it with the key and submit the form.
 try:
@@ -82,7 +82,7 @@ except NoSuchElementException:
     answer.submit()
 
     # If we've answered correctly, now we have to wait for the password field.
-    WebDriverWait(b, timeout=5).until(_element_available('input#password'))
+    WebDriverWait(b, timeout=10).until(_element_available('input#password'))
 
     # Fill the password and submit.
     password = b.find_element_by_css_selector('input#password')
@@ -90,7 +90,7 @@ except NoSuchElementException:
     password.submit()
 
 # Finally, once we have the amount on the page, harvest it and print the result.
-WebDriverWait(b, timeout=5).until(_element_available('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
+WebDriverWait(b, timeout=10).until(_element_available('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
 amount = b.find_element_by_css_selector('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount')
 
 print 'AES ({}): {}'.format(user, amount.text)
