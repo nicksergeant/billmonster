@@ -1,4 +1,4 @@
-This is a collection of Selenium scripts to automate the retrieval of current
+A suite of Selenium scripts to automate the retrieval of current
 balances due for several financial providers.
 
 # Requirements
