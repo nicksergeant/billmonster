@@ -1,3 +1,7 @@
+# Bill Monster
+
+The Bill Monster eats your bills and simply tells you your current balances due.
+
 A suite of Selenium scripts to automate the retrieval of current
 balances due for several financial providers.
 
