@@ -24,7 +24,20 @@ local password storage backend to retrieve passwords. On OS X, the Keychain is u
     python aessuccess.org.py nick
 
 The script checks the password backend for a password stored with the name
-"aessuccess.org" and a username of "nick" and begins the login process.
+`aessuccess.org` and a username of `nick` and begins the login process.
+
+AES requires security questions if you're logging in on a computer that isn't recognized.
+The Bill Monster has built-in support for these. When you're running the script, you'll
+see the security questions come on screen, and you'll need to add those to your keychain.
+A sample keychain entry for an AES security question:
+
+    Name: aessuccess.org
+    Kind: application password
+    Account: nick *What is your mother's middle name?
+    Where: aessuccess.org
+    Password: Emmy Lou
+
+...where `nick` is your username, and `Emmy Lou` is your mother's middle name.
 
 If it is able to login successfully, it prints the following to stdout:
 
