@@ -27,9 +27,10 @@ The script checks the password backend for a password stored with the name
 `aessuccess.org` and a username of `nick` and begins the login process.
 
 AES requires security questions if you're logging in on a computer that isn't recognized.
-The Bill Monster has built-in support for these. When you're running the script, you'll
-see the security questions come on screen, and you'll need to add those to your keychain.
-A sample keychain entry for an AES security question:
+The Bill Monster has built-in support for these. When you're running the script for the first
+time, you'll see the security questions come on screen, and you'll need to add those to your
+keychain to avoid holding up the script in subsequent runs. A sample keychain entry for an AES
+security question:
 
     Name: aessuccess.org
     Kind: application password
