@@ -7,17 +7,17 @@ The Bill Monster eats your bills and simply tells you your current balances due.
 It uses Selenium to automate the process of logging into each provider and harvesting
 the balances.
 
-# Requirements
+## Requirements
 
 - brew install selenium-server-standalone
 - pip install clint keyring selenium
 
-# How it works
+## How it works
 
 The script uses [keyring](http://pypi.python.org/pypi/keyring/), which uses a
 local password storage backend to retrieve passwords. On OS X, the Keychain is used.
 
-# Usage and supported providers
+## Usage and supported providers
 
 ### AESSuccess.org:
 
