@@ -1,5 +1,7 @@
 # Bill Monster
 
+![Nom](http://i.imgur.com/kYSmu.png)
+
 The Bill Monster eats your bills and simply tells you your current balances due.
 
 It uses Selenium to automate the process of logging into each provider and harvesting
