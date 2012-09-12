@@ -46,3 +46,9 @@ security question:
 If it is able to login successfully, it prints the following to stdout:
 
     AES (nick): $120.45
+
+### WellsFargo.com:
+
+    python wellsfargo.com.py nick
+
+Currently Wells Fargo support is only for single loan accounts.
