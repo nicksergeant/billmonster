@@ -26,7 +26,15 @@ See the provided .config sample file in the repo. Copy that file to ~/.billmonst
 configuration sections for each provider you would like to use. Multiple accounts per provider
 is also supported (see the sample).
 
-## Usage and supported providers
+## Usage
+
+See below for using each individual provider script separately.
+
+Otherwise, you can create a config (see above) and run the script:
+
+    python billmonster
+
+## Supported providers
 
 ### AESSuccess.org:
 
