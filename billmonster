@@ -1,0 +1,41 @@
+#!/usr/bin/python
+
+from ConfigParser import ConfigParser
+from selenium import webdriver
+
+from aessuccess import aessuccess
+from wellsfargo import wellsfargo
+
+import os
+
+
+config = ConfigParser()
+config.read(os.path.expanduser('~/.billmonster'))
+
+# Providers map.
+PROVIDERS = {
+    'aessuccess': aessuccess,
+    'wellsfargo': wellsfargo,
+}
+
+def main():
+
+    # Init the WebDriver.
+    browser = webdriver.Firefox()
+
+    for account in config._sections:
+
+        # Grab the provider and the usernames.
+        provider = account
+        usernames = config._sections[account]['users']
+        usernames = [x.strip() for x in usernames.split(',')]
+
+        # Run the script for each account user.
+        for user in usernames:
+            PROVIDERS[provider](user, False, browser)
+
+    browser.quit()
+
+
+if __name__ == '__main__':
+    main()

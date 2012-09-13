@@ -20,6 +20,12 @@ with multiple providers, usernames, etc.
 The script uses [keyring](http://pypi.python.org/pypi/keyring/), which uses a
 local password storage backend to retrieve passwords. On OS X, the Keychain is used by default.
 
+## Account and username configuration
+
+See the provided .config sample file in the repo. Copy that file to ~/.billmonster and create
+configuration sections for each provider you would like to use. Multiple accounts per provider
+is also supported (see the sample).
+
 ## Usage and supported providers
 
 ### AESSuccess.org:
