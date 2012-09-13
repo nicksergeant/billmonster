@@ -80,3 +80,21 @@ security question:
     python wellsfargo.py nick
 
 Currently Wells Fargo support is only for single loan accounts.
+
+### Future supported providers
+
+- AT&T
+- Bank of America Credit Cards
+- Capital One Credit Cards
+- Tompkins Bank Credit Cards
+- Citi Credit Cards
+- Community Bank NA Loans
+- ESL FCU Loans
+- M&T Bank Loans
+- Nelnet Student Loans
+- Old Navy Credit Cards
+- RG&E Gas & Electric Bills
+- The Limited Credit Cards
+- Time Warner Cable Bills
+- Travelers Insurance Bills
+- USAA Credit Cards
