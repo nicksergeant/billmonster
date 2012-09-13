@@ -7,9 +7,6 @@ The Bill Monster eats your bills and tells you what your current due balances ar
 It uses Selenium to automate the process of logging into each provider and harvesting
 the balances.
 
-Currently this is only a collection of scripts, but eventually it will be a CLI for interacting
-with multiple providers, usernames, etc.
-
 ## Requirements
 
 - `brew install selenium-server-standalone` (or via your favorite OS package manager)
