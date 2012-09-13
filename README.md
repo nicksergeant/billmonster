@@ -41,6 +41,16 @@ See below for using each individual provider script separately.
 Otherwise, you can create a config (see above) and run the script:
 
     python billmonster
+    
+Once started, you'll see a line for each provider / account that it begins to process, like this:
+
+    AES (nick)
+    
+If everything goes smoothly, the Bill Monster will then print the balance to stdout:
+
+    AES (nick): $120.45
+    
+It'll then move on to the next account, and so on.
 
 ## Supported providers
 
@@ -64,10 +74,6 @@ security question:
     Password: Emmy Lou
 
 ...where `nick` is your username, and `Emmy Lou` is your mother's middle name.
-
-If it is able to login successfully, it prints the following to stdout:
-
-    AES (nick): $120.45
 
 ### WellsFargo.com:
 
