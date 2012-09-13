@@ -23,6 +23,17 @@ See the provided `.config` sample file in the repo. Copy that file to `~/.billmo
 configuration sections for each provider you would like to use. Multiple accounts per provider
 is also supported (see the sample).
 
+## Password configuration
+
+Use your [keyring](http://pypi.python.org/pypi/keyring/)'s password backend to store your passwords.
+
+As an example, if I wanted to use the Wells Fargo provider, I would create an entry like this:
+
+    Name: wellsfargo.com
+    Account: nick
+    Where: wellsfargo.com
+    Password: o-hi-thar
+
 ## Usage
 
 See below for using each individual provider script separately.
