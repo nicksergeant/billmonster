@@ -38,7 +38,7 @@ Otherwise, you can create a config (see above) and run the script:
 
 ### AESSuccess.org:
 
-    python aessuccess.org.py nick
+    python aessuccess.py nick
 
 The script checks the password backend for a password stored with the name
 `aessuccess.org` and a username of `nick` and begins the login process if it finds one.
@@ -63,6 +63,6 @@ If it is able to login successfully, it prints the following to stdout:
 
 ### WellsFargo.com:
 
-    python wellsfargo.com.py nick
+    python wellsfargo.py nick
 
 Currently Wells Fargo support is only for single loan accounts.
