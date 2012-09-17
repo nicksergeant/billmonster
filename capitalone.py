@@ -12,7 +12,7 @@ from clint.textui import colored, puts
 import keyring, sys
 
 
-def att(user=None, quit_when_finished=True, browser=None):
+def capitalone(user=None, quit_when_finished=True, browser=None):
 
     if not user:
         # Get the username from the command line arguments.
@@ -20,11 +20,11 @@ def att(user=None, quit_when_finished=True, browser=None):
 
     # Must supply username.
     if user is None:
-        puts(colored.red('You must supply a username like "python att.py nick"'))
+        puts(colored.red('You must supply a username like "python capitalone.py nick"'))
         sys.exit()
 
     # Get the user's password from the password backend.
-    key = keyring.get_password('att.com', user)
+    key = keyring.get_password('capitalone.com', user)
 
     # If the key doesn't exist in the password backend.
     if key is None:
@@ -33,7 +33,7 @@ def att(user=None, quit_when_finished=True, browser=None):
         sys.exit()
 
     # Log what we're currently working on.
-    puts(colored.blue('\nAT&T ({})'.format(user)))
+    puts(colored.blue('\nCapital One: ({})'.format(user)))
 
     if not browser:
         # Init the WebDriver.
@@ -41,28 +41,32 @@ def att(user=None, quit_when_finished=True, browser=None):
     else:
         b = browser
 
-    b.get('https://www.att.com/')
+    b.get('https://www.capitalone.com/')
+
+    # Only credit card accounts are supported at this time.
+    account_type = b.find_element_by_css_selector('option[value="credit cards"]')
+    account_type.click()
 
     # Find the username field on the page.
-    username = b.find_element_by_css_selector('input#userid')
+    username = b.find_element_by_css_selector('input#eos-userid')
     username.send_keys(user)
 
     # Find the password field on the page.
-    password = b.find_element_by_css_selector('input#password')
+    password = b.find_element_by_css_selector('input#eos-password')
     password.send_keys(key)
     password.submit()
 
-    # Wait for an account page.
+    # Wait for an account list.
     try:
-        WebDriverWait(b, timeout=10).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'table.dataTable'))
     except TimeoutException:
-        puts(colored.red("Couldn't find an account for that username."))
+        puts(colored.red("Couldn't find any accounts for that username."))
         b.quit()
         sys.exit()
 
-    amount = b.find_element_by_css_selector('div.mybilldiv span.colorOrange.font30imp')
+    amount = b.find_element_by_css_selector('table.dataTable tr.itemSummary td:nth-child(4) p')
 
-    print 'AT&T ({}): {}'.format(user, amount.text)
+    print 'Capital One ({}): {}'.format(user, amount.text)
 
     if quit_when_finished:
         b.quit()
@@ -71,4 +75,4 @@ def att(user=None, quit_when_finished=True, browser=None):
 
 
 if __name__ == '__main__':
-    att()
+    capitalone()

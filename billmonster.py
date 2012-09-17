@@ -14,12 +14,16 @@ def main():
 
     from aessuccess import aessuccess
     from att import att
+    from bankofamerica import bankofamerica
+    from capitalone import capitalone
     from wellsfargo import wellsfargo
 
     # Providers map.
     PROVIDERS = {
         'aessuccess': aessuccess,
         'att': att,
+        'bankofamerica': bankofamerica,
+        'capitalone': capitalone,
         'wellsfargo': wellsfargo,
     }
 

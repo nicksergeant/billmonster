@@ -84,13 +84,13 @@ security question:
 
 ### ATT.com
 
-    python att.py 3155551234
+    python att.py 5555551234
 
 Note: Your AT&T account username is probably your phone number.
 
 ### BankofAmerica.com
 
-    python bankofamerica.py george1234
+    python bankofamerica.py nick
 
 Bank of America requires that you also provide the state that the account is in. You'll need to add this to your config file (see above) like so:
 
@@ -103,6 +103,10 @@ You also need to specify which account to retrieve a due balance from:
     state = NY
     account = Signature Visa
 
+### CapitalOne.com
+
+    python capitalone.py nick
+
 ### WellsFargo.com
 
     python wellsfargo.py nick
@@ -111,8 +115,6 @@ Currently Wells Fargo support is only for single loan accounts.
 
 ### Future supported providers
 
-- Bank of America Credit Cards
-- Capital One Credit Cards
 - Tompkins Bank Credit Cards
 - Citi Credit Cards
 - Community Bank NA Loans
