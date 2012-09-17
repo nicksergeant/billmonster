@@ -56,9 +56,8 @@ def att(user=None, quit_when_finished=True, browser=None):
     try:
         WebDriverWait(b, timeout=10).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
     except TimeoutException:
-        puts(colored.red("Couldn't find an account for that username."))
-        b.quit()
-        sys.exit()
+        puts(colored.red("Looks like the system is down."))
+        return b
 
     amount = b.find_element_by_css_selector('div.mybilldiv span.colorOrange.font30imp')
 
