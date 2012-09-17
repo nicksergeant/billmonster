@@ -88,7 +88,13 @@ def aessuccess(user=None, quit_when_finished=True, browser=None):
         password.submit()
 
     # Finally, once we have the amount on the page, harvest it and print the result.
-    WebDriverWait(b, timeout=10).until(_element_available(b, 'table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
+
+    try:
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
+    except TimeoutException:
+        puts(colored.red("Looks like the system is down.".format(question)))
+        return b
+
     amount = b.find_element_by_css_selector('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount')
 
     print 'AES ({}): {}'.format(user, amount.text)
