@@ -52,18 +52,15 @@ def att(user=None, quit_when_finished=True, browser=None):
     password.send_keys(key)
     password.submit()
 
-    # Wait for an account list.
+    # Wait for an account page.
     try:
-        WebDriverWait(b, timeout=10).until(_element_available(b, 'a.account'))
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
     except TimeoutException:
-        puts(colored.red("Couldn't find any accounts for that username."))
+        puts(colored.red("Couldn't find an account for that username."))
         b.quit()
         sys.exit()
 
-    # Click the first account.
-    b.find_element_by_css_selector('a.account').click()
-
-    amount = b.find_element_by_css_selector('table#balanceDetails td.topRow a')
+    amount = b.find_element_by_css_selector('div.mybilldiv span.colorOrange.font30imp')
 
     print 'AT&T ({}): {}'.format(user, amount.text)
 

@@ -54,7 +54,7 @@ It'll then move on to the next account, and so on.
 
 ## Supported providers
 
-### AESSuccess.org:
+### AESSuccess.org
 
     python aessuccess.py nick
 
@@ -75,7 +75,13 @@ security question:
 
 ...where `nick` is your username, and `Emmy Lou` is your mother's middle name.
 
-### WellsFargo.com:
+### ATT.com
+
+    python att.py 3155551234
+
+Note: Your AT&T account username is probably your phone number.
+
+### WellsFargo.com
 
     python wellsfargo.py nick
 
