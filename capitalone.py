@@ -33,7 +33,7 @@ def capitalone(user=None, quit_when_finished=True, browser=None):
         sys.exit()
 
     # Log what we're currently working on.
-    puts(colored.blue('\nCapital One: ({})'.format(user)))
+    puts(colored.blue('\nCapital One ({})'.format(user)))
 
     if not browser:
         # Init the WebDriver.

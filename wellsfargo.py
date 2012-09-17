@@ -33,7 +33,7 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
         sys.exit()
 
     # Log what we're currently working on.
-    puts(colored.blue('\nWells Fargo: ({})'.format(user)))
+    puts(colored.blue('\nWells Fargo ({})'.format(user)))
 
     if not browser:
         # Init the WebDriver.

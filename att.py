@@ -57,7 +57,11 @@ def att(user=None, quit_when_finished=True, browser=None):
         WebDriverWait(b, timeout=10).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
     except TimeoutException:
         puts(colored.red("Looks like the system is down."))
-        return b
+
+        if quit_when_finished:
+            b.quit()
+        else:
+            return b
 
     amount = b.find_element_by_css_selector('div.mybilldiv span.colorOrange.font30imp')
 
