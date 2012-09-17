@@ -1,10 +1,8 @@
 #!/usr/bin/python
 
 from ConfigParser import ConfigParser
+from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
-
-from aessuccess import aessuccess
-from wellsfargo import wellsfargo
 
 import os
 
@@ -12,13 +10,19 @@ import os
 config = ConfigParser()
 config.read(os.path.expanduser('~/.billmonster'))
 
-# Providers map.
-PROVIDERS = {
-    'aessuccess': aessuccess,
-    'wellsfargo': wellsfargo,
-}
-
 def main():
+
+    from aessuccess import aessuccess
+    from att import att
+    from wellsfargo import wellsfargo
+
+    # Providers map.
+    PROVIDERS = {
+        'aessuccess': aessuccess,
+        'att': att,
+        'wellsfargo': wellsfargo,
+    }
+
 
     # Init the WebDriver.
     browser = webdriver.Firefox()
@@ -35,6 +39,18 @@ def main():
             PROVIDERS[provider](user, False, browser)
 
     browser.quit()
+
+
+# Helper function to check whether an element exists yet on the page.
+def _element_available(browser, element):
+    def callback(browser):
+        try:
+            browser.find_element_by_css_selector(element)
+        except NoSuchElementException:
+            return False
+        else:
+            return True
+    return callback
 
 
 if __name__ == '__main__':

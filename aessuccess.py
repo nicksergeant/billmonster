@@ -4,6 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium import webdriver
 
+from billmonster import _element_available
+
 from clint import args
 from clint.textui import colored, puts
 
@@ -18,7 +20,7 @@ def aessuccess(user=None, quit_when_finished=True, browser=None):
 
     # Must supply username.
     if user is None:
-        puts(colored.red('You must supply a username like "python aessuccess.org.py nick"'))
+        puts(colored.red('You must supply a username like "python aessuccess.py nick"'))
         sys.exit()
 
     # Get the user's password from the password backend.
@@ -46,23 +48,12 @@ def aessuccess(user=None, quit_when_finished=True, browser=None):
     username.send_keys(user)
     username.submit()
 
-    # Helper function to check whether an element exists yet on the page.
-    def _element_available(element):
-        def callback(browser):
-            try:
-                browser.find_element_by_css_selector(element)
-            except NoSuchElementException:
-                return False
-            else:
-                return True
-        return callback
-
     # If we have a password field, continue. Otherwise, wait to see if we are
     # being asked a security question.
     try:
-        WebDriverWait(b, timeout=10).until(_element_available('input#password'))
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'input#password'))
     except TimeoutException:
-        WebDriverWait(b, timeout=10).until(_element_available('input#answer'))
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'input#answer'))
 
     # If we have a password field now, fill it with the key and submit the form.
     try:
@@ -89,7 +80,7 @@ def aessuccess(user=None, quit_when_finished=True, browser=None):
         answer.submit()
 
         # If we've answered correctly, now we have to wait for the password field.
-        WebDriverWait(b, timeout=10).until(_element_available('input#password'))
+        WebDriverWait(b, timeout=10).until(_element_available(b, 'input#password'))
 
         # Fill the password and submit.
         password = b.find_element_by_css_selector('input#password')
@@ -97,7 +88,7 @@ def aessuccess(user=None, quit_when_finished=True, browser=None):
         password.submit()
 
     # Finally, once we have the amount on the page, harvest it and print the result.
-    WebDriverWait(b, timeout=10).until(_element_available('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
+    WebDriverWait(b, timeout=10).until(_element_available(b, 'table.paymentSummaryTable tbody tr.trCurrentPayment span.amount'))
     amount = b.find_element_by_css_selector('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount')
 
     print 'AES ({}): {}'.format(user, amount.text)

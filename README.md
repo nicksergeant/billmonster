@@ -40,7 +40,7 @@ See below for using each individual provider script separately.
 
 Otherwise, you can create a config (see above) and run the script:
 
-    python billmonster
+    python billmonster.py
     
 Once started, you'll see a line for each provider / account that it begins to process, like this:
 

@@ -12,7 +12,7 @@ from clint.textui import colored, puts
 import keyring, sys
 
 
-def wellsfargo(user=None, quit_when_finished=True, browser=None):
+def att(user=None, quit_when_finished=True, browser=None):
 
     if not user:
         # Get the username from the command line arguments.
@@ -20,11 +20,11 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
 
     # Must supply username.
     if user is None:
-        puts(colored.red('You must supply a username like "python wellsfargo.py nick"'))
+        puts(colored.red('You must supply a username like "python att.py nick"'))
         sys.exit()
 
     # Get the user's password from the password backend.
-    key = keyring.get_password('wellsfargo.com', user)
+    key = keyring.get_password('att.com', user)
 
     # If the key doesn't exist in the password backend.
     if key is None:
@@ -33,7 +33,7 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
         sys.exit()
 
     # Log what we're currently working on.
-    puts(colored.blue('\nWells Fargo: ({})'.format(user)))
+    puts(colored.blue('\nAT&T: ({})'.format(user)))
 
     if not browser:
         # Init the WebDriver.
@@ -41,7 +41,7 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
     else:
         b = browser
 
-    b.get('https://www.wellsfargo.com/')
+    b.get('https://www.att.com/')
 
     # Find the username field on the page.
     username = b.find_element_by_css_selector('input#userid')
@@ -65,7 +65,7 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
 
     amount = b.find_element_by_css_selector('table#balanceDetails td.topRow a')
 
-    print 'Wells Fargo ({}): {}'.format(user, amount.text)
+    print 'AT&T ({}): {}'.format(user, amount.text)
 
     if quit_when_finished:
         b.quit()
@@ -74,4 +74,4 @@ def wellsfargo(user=None, quit_when_finished=True, browser=None):
 
 
 if __name__ == '__main__':
-    wellsfargo()
+    att()
