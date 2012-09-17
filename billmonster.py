@@ -23,7 +23,6 @@ def main():
         'wellsfargo': wellsfargo,
     }
 
-
     # Init the WebDriver.
     browser = webdriver.Firefox()
 

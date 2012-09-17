@@ -17,11 +17,18 @@ the balances.
 The script uses [keyring](http://pypi.python.org/pypi/keyring/), which uses a
 local password storage backend to retrieve passwords. On OS X, the Keychain is used by default.
 
-## Account and username configuration
+## Account, username, and settings configuration
 
 See the provided `.config` sample file in the repo. Copy that file to `~/.billmonster` and create
 configuration sections for each provider you would like to use. Multiple accounts per provider
 is also supported (see the sample).
+
+Some providers require additional options. For example, Bank of America requires that you provide the state that the account is in. In the config file, you would add this to the entry like so:
+
+    [bankofamerica]
+    state = NY
+
+These provider-specific settings are documented in their respective sections below.
 
 ## Password configuration
 
@@ -81,6 +88,21 @@ security question:
 
 Note: Your AT&T account username is probably your phone number.
 
+### BankofAmerica.com
+
+    python bankofamerica.py george1234
+
+Bank of America requires that you also provide the state that the account is in. You'll need to add this to your config file (see above) like so:
+
+    [bankofamerica]
+    state = NY
+
+You also need to specify which account to retrieve a due balance from:
+
+    [bankofamerica]
+    state = NY
+    account = Signature Visa
+
 ### WellsFargo.com
 
     python wellsfargo.py nick
@@ -89,7 +111,6 @@ Currently Wells Fargo support is only for single loan accounts.
 
 ### Future supported providers
 
-- AT&T
 - Bank of America Credit Cards
 - Capital One Credit Cards
 - Tompkins Bank Credit Cards
