@@ -54,7 +54,7 @@ def att(user=None, quit_when_finished=True, browser=None):
 
     # Wait for an account page.
     try:
-        WebDriverWait(b, timeout=10).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
+        WebDriverWait(b, timeout=15).until(_element_available(b, 'div.mybilldiv span.colorOrange.font30imp'))
     except TimeoutException:
         puts(colored.red("Looks like the system is down."))
 

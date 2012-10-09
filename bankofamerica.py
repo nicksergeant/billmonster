@@ -17,7 +17,7 @@ import keyring, os, sys
 config = ConfigParser()
 config.read(os.path.expanduser('~/.billmonster'))
 
-def bankofamerica(user=None, quit_when_finished=True, browser=None):
+def bankofamerica(user=None, quit_when_finished=True, browser=None, index=None):
 
     if not user:
         # Get the username from the command line arguments.
@@ -101,11 +101,13 @@ def bankofamerica(user=None, quit_when_finished=True, browser=None):
         password.submit()
 
     # Wait until we have a link with the account text, and click it.
-    account = config._sections['bankofamerica']['account']
-    WebDriverWait(b, timeout=10).until(_element_available(b, 'a#{}'.format(account)))
-    #amount = b.find_element_by_css_selector('table.paymentSummaryTable tbody tr.trCurrentPayment span.amount')
+    accounts = config._sections['bankofamerica']['account'].split(',')
+    account = accounts[index]
+    WebDriverWait(b, timeout=10).until(_element_available(b, 'a[id="{}"]'.format(account)))
+    account_link = b.find_element_by_css_selector('a[id="{}"]'.format(account))
+    account_link.click()
 
-    #print 'Bank of America ({}): {}'.format(user, amount.text)
+    print 'Bank of America ({}): {}'.format(user, amount.text)
 
     if quit_when_finished:
         b.quit()

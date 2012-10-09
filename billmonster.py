@@ -37,9 +37,12 @@ def main():
         usernames = config._sections[account]['users']
         usernames = [x.strip() for x in usernames.split(',')]
 
+        index = 0
+
         # Run the script for each account user.
         for user in usernames:
-            PROVIDERS[provider](user, False, browser)
+            PROVIDERS[provider](user, False, browser, index)
+            index = index + 1
 
     browser.quit()
 
